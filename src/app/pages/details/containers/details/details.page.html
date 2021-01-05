@@ -1,0 +1,46 @@
+<div class="container">
+  <wn-loader *ngIf="loading$ | async; else notLoading"></wn-loader>
+  <div #notLoading>
+    <div *ngIf="!(error$ | async)">
+      <div>
+        <div class="card mt-2">
+          <div class="card-body">
+            <div class="row text-center">
+              <h3 class="col-md-3">{{ (details$ | async).city.name }}, {{ (details$ | async).city.country }} </h3>
+              <div class="row col-md-9">
+                <h4 class="col-md">
+                  {{ dateTitle((details$ | async).current.dateTime).date }}
+                  {{ dateTitle((details$ | async).current.dateTime).month }}
+                </h4>
+                <h4 class="col-md">
+                  {{ dateTitle((details$ | async).current.dateTime).day }}
+                </h4>
+              </div>
+            </div>
+
+            <wn-detailed-weather
+              [weather]="(details$ | async).current"
+              [timeZone]="(details$ | async).city.timeZone"
+              [unit]="unit$ | async">
+            </wn-detailed-weather>
+          </div>
+        </div>
+        
+        <div class="card-group">
+          <ng-container *ngFor="let daily of (details$ | async).daily">
+            <wn-daily-weather
+              *ngIf="validate(daily.date) !== validate((details$ | async).current.dateTime)"
+              class="card mx-auto mt-2"
+              style="min-width: 15rem;"
+              [dailyWeather]="daily"
+              [timeZone]="(details$ | async).city.timeZone"
+              [unit]="unit$ | async">
+            </wn-daily-weather>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="error$ | async">Erro</div>
+  </div>
+</div>
+

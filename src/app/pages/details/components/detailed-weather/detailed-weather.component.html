@@ -1,0 +1,74 @@
+<div class="row no-gutters mt-2">
+  
+  <div class="col-md-2 text-center">
+    <img class="card-img mx-auto" style="width: 100%; max-width: 10rem;" [src]="weatherIcon">
+  </div>
+
+  <div class="col-md-4 pt-1 text-center">
+    <h1 class="mx-auto">
+      <i class="fas fa-thermometer-half text-secondary"></i>
+      {{ weather.temp.toFixed(1) }} {{ unitSymbol }}
+    </h1>
+
+    <h5 class="mx-auto">
+      Sensação: {{ weather.feelsLike.toFixed(1) }} {{ unitSymbol }}
+    </h5>
+
+    <h3 class="text-capitalize">{{ weather.description }}</h3>
+  </div>
+
+  <div class="col-md-6">
+    
+    <div class="row mx-auto text-center">
+      <h5 class="col-md">
+        <i class="fas fa-temperature-low text-info"></i>
+        {{ weather.minTemp.toFixed(1) }} {{ unitSymbol }}
+      </h5>
+  
+      <h5 class="col-md">
+        <i class="fas fa-temperature-high text-danger"></i>
+        {{ weather.maxTemp.toFixed(1) }} {{ unitSymbol }}
+      </h5>
+    </div>
+
+    <div class="row mx-auto text-center">
+      <h5 class="col-md">
+        <i class="fas fa-tint text-primary"></i>
+        {{ weather.humidity.toFixed(1) }} %
+      </h5>
+
+      <h5 class="col-md">
+        <i class="fas fa-cloud-rain text-primary"></i>
+        {{ rain }}
+      </h5>
+    </div>
+      
+
+    <div class="row mx-auto text-center">
+      <h5 class="col-md">
+        <i class="fas fa-wind text-info"></i>
+        {{ weather.wind.speed.toFixed(1) }} m/s - {{ directionWind.id }}
+      </h5>
+
+      <h5 class="col-md mx-auto">
+        {{ weather.pressure }} hPa
+      </h5>
+    </div>
+
+
+    <div class="row mx-auto text-center">
+      <h5 class="col-md">
+        <i class="fas fa-sun m-1 text-warning"></i>
+        <span class="col-md" title="Nascer do Sol">
+          Nascer: {{ ToHourMinute(weather.sunrise) }}
+        </span>
+
+        <span class="col-md" title="Pôr do Sol">
+          Ocaso: {{ ToHourMinute(weather.sunset) }}
+        </span>
+      </h5>
+    </div>
+    
+  </div>
+
+</div>

@@ -1,0 +1,33 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <div class="text-right">
+      <a class="card-link" (click)="onToggleBookmark()" >
+        <i class="{{ isFavorite ? 'fas' : 'far' }} fa-star fa-2x fa-pull-right text-warning"></i>
+      </a>
+    </div>
+    <h2 class="card-title text-center">{{ cityName }}</h2>
+    <h4 class="card-subtitle text-center text-muted">{{ countryName }}</h4>
+
+    <wn-current-details
+      [weather]="cityWeather.weather"
+      [unit]="unit">
+    </wn-current-details>
+
+  </div>
+
+  <div class="card-footer">
+    <div class="text-center">
+      <a
+        class="card-link"
+        routerLink="/details"
+        [queryParams]="{
+          lat: cityWeather.city.coord.lat,
+          lon: cityWeather.city.coord.lon
+        }"
+      >
+        Ver detalhes
+      </a>
+    </div>
+  </div>
+</div>
+

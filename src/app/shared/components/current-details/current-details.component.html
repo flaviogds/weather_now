@@ -1,0 +1,32 @@
+<div class="row mx-auto">
+  <img class="card-img mx-auto" style="width: 10rem;" [src]="weatherIcon">
+  <h4 class="card-text mx-auto">{{ weather.description }}</h4>
+</div>
+
+<div class="col card-text">
+  <h3 class="text-center">
+    <div class="m-auto">
+      <i class="fas fa-thermometer-half text-secondary"></i>
+      {{ weather.temp.toFixed(1) }} {{ unitSymbol }}
+    </div>
+
+
+    <h5 class="mx-auto">
+      Sensação: 
+      {{ weather.feelsLike.toFixed(1) }} {{ unitSymbol }}
+    </h5>
+  </h3>
+
+  <div class="row mx-auto mb-2">
+    <h5 class="mx-auto">
+      <i class="fas fa-tint text-primary"></i>
+      {{ weather.humidity.toFixed(1) }}%
+    </h5>
+  
+    <h5 class="mx-auto">
+      <i class="fas fa-wind text-info"></i>
+      {{ weather.wind.speed.toFixed(1) }} m/s
+    </h5>
+  </div>
+
+</div>

@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Norte",
+        "deg": 0,
+        "id": "N"
+    },
+    {
+        "name": "Norte-Nordeste", 
+        "deg": 22.5, 
+        "id": "NNE"
+    },
+    {
+        "name": "Nordeste", 
+        "deg": 45, 
+        "id": "NE"
+    },
+    {
+        "name": "Leste-Nordeste", 
+        "deg": 67.5, 
+        "id": "ENE"
+    },
+    {
+        "name": "Leste", 
+        "deg": 90, 
+        "id": "E"
+    },
+    {
+        "name": "Leste-Sudeste", 
+        "deg": 112.5, 
+        "id": "ESE"
+    },
+    {
+        "name": "Sudeste", 
+        "deg": 135, 
+        "id": "SE"
+    },
+    {
+        "name": "Sul-Sudeste", 
+        "deg": 157.5, 
+        "id": "SSE"
+    },
+    {
+        "name": "Sul", 
+        "deg": 180, 
+        "id": "S"
+    },
+    {
+        "name": "Sul-Sudoeste", 
+        "deg": 202.5, 
+        "id": "SSO"
+    },
+    {
+        "name": "Sudoeste", 
+        "deg": 225, 
+        "id": "SW"
+    },
+    {
+        "name": "Oeste-Sudoeste", 
+        "deg": 247.5, 
+        "id": "WSW"
+    },
+    {
+        "name": "Oeste", 
+        "deg": 270, 
+        "id": "W"
+    },
+    {
+        "name": "Oeste-Noroeste", 
+        "deg": 292.5, 
+        "id": "WNW"
+    },
+    {
+        "name": "Noroeste", 
+        "deg": 315, 
+        "id": "NW"
+    },
+    {
+        "name": "Norte-Noroeste", 
+        "deg": 337.5, 
+        "id": "NNW"
+    }
+]

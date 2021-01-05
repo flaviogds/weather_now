@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="form-inline my-2 mt-sm-2">
+    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" [formControl]="searchControl">
+    <button class="btn btn-outline-success my-2 my-sm-2" [disabled]="!searchControl.valid" (click)="doSearch()" >Pesquisar</button>
+    <div class="my-2 ml-sm-auto" id="navbar-portal-outlet"></div>
+  </div>
+  
+  <div>
+    <wn-loader *ngIf="loading$ | async"></wn-loader>
+  
+    <div *ngIf="!(loading$ | async) && !(error$ | async) && !!cityWeather">
+
+      <wn-current-weather
+        [cityWeather]="cityWeather"
+        [isFavorite]="isCurrentFavorite$ | async"
+        [unit]="unit$ | async"
+        (toggleBookmark)="onToggleBookmark()"
+      >
+      </wn-current-weather>
+      
+    </div>
+  
+    <div *ngIf="!(loading$ | async) && error$ | async">
+      <a>Tentar novamente</a>
+    </div>
+  </div>
+</div>

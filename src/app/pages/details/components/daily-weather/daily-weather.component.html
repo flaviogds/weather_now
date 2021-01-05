@@ -1,0 +1,58 @@
+<h5 class="card-header text-center">
+  <span class="badge text-light bg-success">{{ date }}</span>
+</h5>
+
+<div class="mb-2" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="mx-auto">
+      <img [src]="icon" class="card-img" style="width: 8rem">
+    </div>
+    
+    <div 
+      class="card-body"
+      data-bs-toggle="tooltip"
+      data-bs-placement="right"
+    >
+      <div class="row text-center mx-auto">
+        <h6 class="col" title="Mínima">
+          <i class="fas fa-temperature-low text-info"></i>
+          {{ weather.minTemp.toFixed(1) }} {{ unitSymbol }}
+        </h6>
+
+        <h6 class="col" title="Máxima">
+          <i class="fas fa-temperature-high text-danger"></i>
+          {{ weather.maxTemp.toFixed(1) }} {{ unitSymbol }}
+        </h6>
+      </div>
+
+      <div class="row text-center mx-auto" >
+        <h6 class="col" title="Humidade">
+          <i class="fas fa-tint text-primary"></i>
+          {{ weather.humidity.toFixed(1) }} %
+        </h6>
+
+        <h6 class="col" title="Velocidade do Vento">
+          <i class="fas fa-wind text-info"></i>
+          {{ weather.wind.speed.toFixed(1) }} m/s
+        </h6>
+      </div>
+
+      <div class="row text-center mx-auto">
+        <h6 class="col">
+          <i class="fas fa-sun m-1 text-warning"></i>
+
+          <span title="Nascer do Sol">
+            {{ ToHourMinute(weather.sunrise) }}
+          </span>
+
+          <i class="fas fa-minus m-1"></i>
+
+          <span title="Pôr do Sol">
+            {{ ToHourMinute(weather.sunset) }}
+          </span>
+        </h6>
+      </div>
+
+    </div>
+  </div>
+</div>
