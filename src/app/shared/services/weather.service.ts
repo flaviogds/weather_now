@@ -5,12 +5,14 @@ import { map, takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
-import { responseToCityWeather, responseToCityDailyWeather } from '../utils/response.utils';
-import { CityWeather, CityDailyWeather } from '../models/weather.model';
-import { AppState } from '../state/app.reducer';
-import { Units } from '../models/units.enum';
-import * as fromConfigSelectors from '../state/config/config.selectors';
 import { environment } from 'src/environments/environment.prod';
+
+import { CityWeather, CityDailyWeather, CityList } from '../models/weather.model';
+import { Units } from '../models/units.enum';
+import { responseToCityWeather, responseToCityDailyWeather, responseToGroupCityWeather } from '../utils/response.utils';
+
+import { AppState } from '../state/app.reducer';
+import * as fromConfigSelectors from '../state/config/config.selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -67,6 +69,12 @@ export class WeatherService implements OnDestroy {
     }});
     return this.doGet<any>('onecall', params)
       .pipe(map(response => responseToCityDailyWeather(response)));
+  }
+
+  getGroupOfCityWeatherById(id: string[]): Observable<CityList> {
+    const params = new HttpParams({fromObject: { id: id.toString() }});
+    return this.doGet<any>('group', params)
+      .pipe(map(response => responseToGroupCityWeather(response)));
   }
 
   private doGet<T>(url: string, params: HttpParams): Observable<T> {

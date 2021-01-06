@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Store, select } from '@ngrx/store';
-import { async, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+
+import { CityDailyWeather } from 'src/app/shared/models/weather.model';
+import { convertData, convertDataTitle } from 'src/app/shared/utils/date-time.utils';
+import { Units } from 'src/app/shared/models/units.enum';
 
 import { AppState } from 'src/app/shared/state/app.reducer';
-import { CityDailyWeather } from 'src/app/shared/models/weather.model';
-import { Units } from 'src/app/shared/models/units.enum';
 import * as fromDetailsActions from '../../state/details.actions';
 import * as fromDetailsSelectors from '../../state/details.selectors';
-import * as fromConfigSelectors from '../../../../shared/state/config/config.selectors';
-import { convertData, convertDataTitle } from 'src/app/shared/utils/date-time.utils';
+import * as fromConfigSelectors from 'src/app/shared/state/config/config.selectors';
 
 @Component({
   selector: 'wn-details',

@@ -8,3 +8,8 @@ export const selectBookmarksList = createSelector(
   selectBookmarksState,
   (bookmarksState: BookmarksState) => bookmarksState.list,
 );
+
+export const selectCityList = createSelector(
+  selectBookmarksState,
+  (bookmarksState: BookmarksState) => bookmarksState.listOfCitys
+)

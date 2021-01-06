@@ -1,7 +1,7 @@
 import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 
-import { Units } from '../../models/units.enum';
 import { CityWeather } from '../../models/weather.model';
+import { Units } from '../../models/units.enum';
 
 @Component({
   selector: 'wn-current-weather',

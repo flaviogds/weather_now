@@ -1,3 +1,8 @@
+export interface CityList {
+  cnt: number,
+  list: CityWeather[]
+}
+
 export interface CityWeather {
   city: City;
   weather: Weather;

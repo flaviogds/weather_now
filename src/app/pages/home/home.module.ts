@@ -7,10 +7,11 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { HomePage } from './containers/home/home.page';
-import { homeReducer } from './state/home.reducer';
-import { HomeEffects } from './state/home.effects';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { UnitSelectorComponent } from './components/unit-selector/unit-selector.component';
+
+import { homeReducer } from './state/home.reducer';
+import { HomeEffects } from './state/home.effects';
 
 @NgModule({
   imports: [

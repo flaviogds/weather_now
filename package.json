@@ -1,7 +1,9 @@
 {
   "name": "weather-now",
   "version": "1.0.1",
-  "exports": {},
+  "exports": {
+    "./": "./*"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

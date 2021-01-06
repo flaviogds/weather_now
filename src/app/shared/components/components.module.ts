@@ -3,12 +3,10 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-
-import { LoaderComponent } from './loader/loader.component';
-import { CitiesTypeaheadComponent } from './cities-typeahead/cities-typeahead.component';
 import { CurrentWeatherComponent } from "./current-weather/current-weather.component";
 import { CurrentDetailsComponent } from "./current-details/current-details.component";
+import { LoaderComponent } from './loader/loader.component';
+import { NavbarComponent } from "./navbar/navbar.component";
 
 
 @NgModule({
@@ -16,19 +14,18 @@ import { CurrentDetailsComponent } from "./current-details/current-details.compo
     CommonModule,
     FormsModule,
     RouterModule,
-    TypeaheadModule.forRoot(),
   ],
   declarations: [
     LoaderComponent,
     CurrentWeatherComponent,
     CurrentDetailsComponent,
-    CitiesTypeaheadComponent,
+    NavbarComponent,
   ],
   exports: [
     LoaderComponent,
     CurrentWeatherComponent,
     CurrentDetailsComponent,
-    CitiesTypeaheadComponent,
+    NavbarComponent,
   ]
 })
 export class ComponentsModule {

@@ -1,18 +1,20 @@
 <div class="container">
-  <wn-loader *ngIf="loading$ | async; else notLoading"></wn-loader>
-  <div #notLoading>
-    <div *ngIf="!(error$ | async)">
+  <wn-loader *ngIf="(loading$ | async)"></wn-loader>
+
+  <div *ngIf="!(loading$ | async)">
+    <div *ngIf="!(error$ | async) && (details$ | async)">
       <div>
         <div class="card mt-2">
           <div class="card-body">
             <div class="row text-center">
-              <h3 class="col-md-3">{{ (details$ | async).city.name }}, {{ (details$ | async).city.country }} </h3>
+              <h3 class="col-md-3">
+                {{ (details$ | async).city.name }},
+                {{ (details$ | async).city.country }}
+              </h3>
               <div class="row col-md-9">
-                <h4 class="col-md">
+                <h4 class="col-sm">
                   {{ dateTitle((details$ | async).current.dateTime).date }}
                   {{ dateTitle((details$ | async).current.dateTime).month }}
-                </h4>
-                <h4 class="col-md">
                   {{ dateTitle((details$ | async).current.dateTime).day }}
                 </h4>
               </div>

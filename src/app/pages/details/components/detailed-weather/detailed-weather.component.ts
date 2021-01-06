@@ -1,12 +1,12 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { Weather } from '../../../../shared/models/weather.model';
-import { Units } from '../../../../shared/models/units.enum';
-import { unitToSymbol } from '../../../../shared/utils/units.utils';
-import { directionWind } from '../../../../shared/utils/direction-wind.utils';
-import { DirectionWind } from '../../../../shared/models/direction-wind.model';
-import { convertTime } from '../../../../shared/utils/date-time.utils';
-import { requestIcon } from '../../../../shared/utils/weather-icon.utils';
+import { DirectionWind } from 'src/app/shared/models/direction-wind.model';
+import { Weather } from 'src/app/shared/models/weather.model';
+import { Units } from 'src/app/shared/models/units.enum';
+import { unitToSymbol } from 'src/app/shared/utils/units.utils';
+import { directionWind } from 'src/app/shared/utils/direction-wind.utils';
+import { convertTime } from 'src/app/shared/utils/date-time.utils';
+import { requestIcon } from "src/app/shared/utils/weather-icon.utils";
 
 @Component({
   selector: 'wn-detailed-weather',
@@ -29,7 +29,7 @@ export class DetailedWeatherComponent {
   }
 
   get rain(): string {
-    return this.weather.rain === undefined ? `- mm` : `${ this.weather.rain["1h"] } mm`
+    return `${this.weather.rain === undefined ?  ' - '  :  this.weather.rain["1h"] } mm`
   }
 
   get unitSymbol(): string {

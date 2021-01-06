@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { HomePage } from './pages/home/containers/home/home.page';
 import { BookmarksPage } from './pages/bookmarks/containers/bookmarks/bookmarks.page';
 

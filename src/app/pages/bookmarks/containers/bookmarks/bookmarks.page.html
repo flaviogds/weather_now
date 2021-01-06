@@ -1,19 +1,22 @@
+
 <div class="container">
-  <div>
-    <h3>Favoritos</h3>
+    <h3 class="my-2">Favoritos</h3>
 
-    <div *ngIf="!(bookmarks$ | async).length">Nenhum favorito adicionado</div>
+    <div class="card-group justify-content-center">
+        <ng-container *ngIf="(listOfCitys$ | async)">
+            <wn-current-weather
+            *ngFor="let city of ((listOfCitys$ | async).list)"
+            class="mx-2 my-2"
+            [cityWeather]="city"
+            [isFavorite]="city"
+            [unit]="unit$ | async"
+            (toggleBookmark)="removeBookmark(city.city.id)"
+            >
+            </wn-current-weather>
+        </ng-container>
+    </div >
 
-    <ul class="list-unstyled">
-      <li *ngFor="let bookmark of bookmarks$ | async">
-        <a [routerLink]="['../details']"
-            [queryParams]="{lat: bookmark.coord.lat, lon: bookmark.coord.lon}">
-          {{ bookmark.name }}
-        </a>
-        <button class="btn btn-outline-dark btn-sm"
-                (click)="removeBookmark(bookmark.id)">X</button>
-      </li>
-    </ul>
-
-  </div>
+    <h4  class="text-center" *ngIf="!(bookmarksList$ | async).length">
+        Nenhum favorito adicionado
+    </h4>
 </div>

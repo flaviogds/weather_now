@@ -1,4 +1,4 @@
-import { CityWeather, CityDailyWeather } from '../models/weather.model';
+import { CityWeather, CityDailyWeather, CityList } from '../models/weather.model';
 
 export function responseToCityWeather(response: any): CityWeather {
   return {
@@ -30,6 +30,41 @@ export function responseToCityWeather(response: any): CityWeather {
     },
   }
 }
+
+export function responseToGroupCityWeather(response: any): CityList {
+  return {
+    cnt: response.cnt,
+    list: response.list.map(d => ({
+      city: {
+        id: d.id,
+        name: d.name,
+        country: d.sys.country,
+        coord: d.coord,
+        timeZone: d.timezone,
+      },
+      weather: {
+        id: d.weather[0].id,
+        description: d.weather[0].description,
+        icon: d.weather[0].icon,
+        temp: d.main.temp,
+        pressure: d.main.pressure,
+        minTemp: d.main.temp_min,
+        maxTemp: d.main.temp_max,
+        feelsLike: d.main.feels_like,
+        humidity: d.main.humidity,
+        wind: {
+          speed: d.wind.speed,
+          deg: d.wind.deg,
+        },
+        sunrise: d.sys.sunrise,
+        sunset: d.sys.sunset,
+        dateTime: d.dt,
+        rain: d.rain,
+      },
+    })),
+  }
+}
+
 
 export function responseToCityDailyWeather(response: any): CityDailyWeather {
   return {

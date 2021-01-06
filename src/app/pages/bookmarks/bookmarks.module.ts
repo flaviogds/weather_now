@@ -8,8 +8,8 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { BookmarksPage } from './containers/bookmarks/bookmarks.page';
 import { bookmarkReducer } from './state/bookmarks.reducer';
-import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { BookmarksEffects } from './state/bookmarks.effects';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   imports: [

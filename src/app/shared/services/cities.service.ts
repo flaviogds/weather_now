@@ -12,8 +12,7 @@ import { CityTypeaheadItem } from '../models/city-typeahead-item.model';
 })
 export class CitiesService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   getCities(query: string): Observable<CityTypeaheadItem[]> {
     return this.http.get<{country: string}[]>('assets/db/cities.json')

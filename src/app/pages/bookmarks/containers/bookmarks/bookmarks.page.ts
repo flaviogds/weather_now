@@ -1,13 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+import { Bookmark } from 'src/app/shared/models/bookmark.model';
+import { CityList } from 'src/app/shared/models/weather.model';
+import { Units } from 'src/app/shared/models/units.enum';
 
 import { BookmarksState } from '../../state/bookmarks.reducer';
-import { Bookmark } from 'src/app/shared/models/bookmark.model';
 import * as fromBookmarksSelectors from '../../state/bookmarks.selectors';
 import * as fromBookmarksActions from '../../state/bookmarks.actions';
-import { CityWeather } from 'src/app/shared/models/weather.model';
+import * as fromConfigSelectors from '../../../../shared/state/config/config.selectors';
 
 @Component({
   selector: 'wn-bookmarks',
@@ -16,15 +19,31 @@ import { CityWeather } from 'src/app/shared/models/weather.model';
 })
 export class BookmarksPage implements OnInit, OnDestroy {
 
-  bookmarks$: Observable<Bookmark[]>;
-
+  bookmarksList$: Observable<Bookmark[]>;
+  bookmarksList: Bookmark[] = [];
+  listOfCitys$: Observable<CityList>;
+  unit$: Observable<Units>;
+  
   private componentDestroyed$ = new Subject();
 
   constructor(private store: Store<BookmarksState>) {
   }
 
   ngOnInit() {
-    this.bookmarks$ = this.store.pipe(select(fromBookmarksSelectors.selectBookmarksList));
+    this.bookmarksList$ = this.store.pipe(select(fromBookmarksSelectors.selectBookmarksList));
+
+    this.bookmarksList$
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((value: any) => this.bookmarksList = value);
+
+    this.store.dispatch(fromBookmarksActions.loadGroupOfCitys(
+      {
+        list: this.bookmarksList.map(d => d.id.toString()),
+      }
+    ));
+
+    this.listOfCitys$ = this.store.pipe(select(fromBookmarksSelectors.selectCityList));
+    this.unit$ = this.store.pipe(select(fromConfigSelectors.selectUnitConfig));
   }
 
   ngOnDestroy() {
