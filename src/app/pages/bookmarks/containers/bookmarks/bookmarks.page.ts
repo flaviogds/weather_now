@@ -38,7 +38,7 @@ export class BookmarksPage implements OnInit, OnDestroy {
 
     this.store.dispatch(fromBookmarksActions.loadGroupOfCitys(
       {
-        list: this.bookmarksList.map(d => d.id.toString()),
+        list: this.bookmarksList.length === 0 ? null : this.bookmarksList.map(d => d.id.toString()),
       }
     ));
 
